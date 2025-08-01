@@ -59,12 +59,12 @@ type ParquetDeviceData struct {
 	Speed           string `parquet:"name=speed, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
 	Mileage         string `parquet:"name=mileage, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
 	DriverTime      string `parquet:"name=driverTime, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
-	MoorTime        string `parquet:"name=MoorTime, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
-	TodayMileage    string `parquet:"name=TodayMileage, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
+	MoorTime        string `parquet:"name=moorTime, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
+	TodayMileage    string `parquet:"name=todayMileage, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
 	Acc             string `parquet:"name=acc, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
 	Locate          string `parquet:"name=locate, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
 	Direction       string `parquet:"name=direction, type=BYTE_ARRAY, convertedtype=UTF8, encoding=PLAIN_DICTIONARY"`
-	WearingCount    int32  `parquet:"name=WearingCount, type=INT32"`
-	NonWearingCount int32  `parquet:"name=NonWearingCount, type=INT32"`
-	TotalHeadCount  int32  `parquet:"name=TotalHeadCount, type=INT32"`
+	WearingCount    *int32 `parquet:"name=wearingCount, type=INT32, repetitiontype=OPTIONAL"`
+	NonWearingCount *int32 `parquet:"name=nonWearingCount, type=INT32, repetitiontype=OPTIONAL"`
+	TotalHeadCount  *int32 `parquet:"name=totalHeadCount, type=INT32, repetitiontype=OPTIONAL"`
 }

@@ -3,12 +3,11 @@ package main
 import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
-	"log"
-	"time"
-
 	parquet_hdfs "github.com/xitongsys/parquet-go-source/hdfs"
 	"github.com/xitongsys/parquet-go/parquet"
 	"github.com/xitongsys/parquet-go/writer"
+	"log"
+	"time"
 )
 
 func main() {
@@ -43,7 +42,7 @@ func main() {
 	}
 	pw.CompressionType = parquet.CompressionCodec_SNAPPY
 
-	batchSize := 10000
+	batchSize := 100000
 	offset := 0
 	totalProcessed := 0
 
@@ -101,9 +100,9 @@ func main() {
 				Acc:             dbData.Acc.String,
 				Locate:          dbData.Locate.String,
 				Direction:       dbData.Direction.String,
-				WearingCount:    dbData.WearingCount.Int32,
-				NonWearingCount: dbData.NonWearingCount.Int32,
-				TotalHeadCount:  dbData.TotalHeadCount.Int32,
+				WearingCount:    &dbData.WearingCount.Int32,
+				NonWearingCount: &dbData.NonWearingCount.Int32,
+				TotalHeadCount:  &dbData.TotalHeadCount.Int32,
 			}
 
 			if err = pw.Write(parquetData); err != nil {

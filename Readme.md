@@ -3,7 +3,8 @@
 docker build -t update-hadoop .
 docker save -o updateHadoop.tar update-hadoop
 
-docker run update-hadoop
+docker load -i updateHadoop.tar
+docker run -d update-hadoop
 
 
 hdfs dfs -rm /safr/2025-07-27.parquet 
